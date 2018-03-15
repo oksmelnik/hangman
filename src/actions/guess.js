@@ -1,11 +1,12 @@
 import { GUESS } from './types'
 
-export const guess = (value) => {
+
+export const makeGuess = (value, result) => {
 
 return {
   type: GUESS,
   payload: {
-    value
+    value, result
   }
 }
 }

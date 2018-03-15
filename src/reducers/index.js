@@ -1,7 +1,7 @@
 import word from './word'
-import image from './image'
+import guess from './guess'
 
 export default {
   word,
-  image
+  guess
 }

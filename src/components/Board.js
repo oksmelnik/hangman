@@ -13,27 +13,36 @@ export class Board extends PureComponent {
     ).isRequired
   }
 
+renderWord = (value) => {
+  return <Character character={value}/>
+}
 
+renderSecretWord = (value) => {
+  return value + " "
+}
 
   render() {
+    const hangImg = [
+          'http://dinder.de/images/hangman/1.png',
+          'http://dinder.de/images/hangman/2.png',
+          'http://dinder.de/images/hangman/3.png',
+          'http://dinder.de/images/hangman/4.png',
+          'http://dinder.de/images/hangman/5.png',
+          'http://dinder.de/images/hangman/6.png',
+          'http://dinder.de/images/hangman/7.png',
+        ]
+const letters = ["a","b","c","d","e","f","g","h","o"]
 
     return (
       <div>
     <h1>Your secret word</h1>
-{this.props.word[0]+"  "}
-{this.props.word[1]+"  "}
-{this.props.word[2]+"  "}
-{this.props.word[3]+"  "}
-{this.props.word[4]+"  "}
+{this.props.word.map(this.renderSecretWord)}
+
   <h1>Make your guess </h1>
-  <Character character={"a"}/>
-  <Character character={"b"}/>
-  <Character character={"c"}/>
-  <Character character={"d"}/>
-  <Character character={"e"}/>
-  <Character character={"f"}/>
-  <Character character={"o"}/>
-  <image src='{this.props.image}'></image>
+  {letters.map(this.renderWord)}
+
+<img src={hangImg[this.props.guess.length]}/>
+
       </div>
     )
   }
@@ -42,7 +51,7 @@ const mapStateToProps = (reduxState) => {
 
   return {
     word: reduxState.word,
-    image: reduxState.image
+    guess: reduxState.guess
   }
 }
 

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { guess } from '../actions/guess'
+import { makeGuess } from '../actions/guess'
 
 
 export class Character extends PureComponent {
@@ -11,7 +11,11 @@ export class Character extends PureComponent {
     }
 
 handleClick = () => {
-this.props.guess(this.props.character)
+  const orig = [ "h","e","l","l","o" ]
+  if (orig.includes(this.props.character)) {
+    this.props.makeGuess(this.props.character, 1)}
+    else
+    this.props.makeGuess(this.props.character, 0)
 }
 
   render() {
@@ -23,4 +27,4 @@ this.props.guess(this.props.character)
 
 const mapStateToProps = ({ word }) => ({ word })
 
-export default connect (mapStateToProps, {guess})(Character)
+export default connect (mapStateToProps, {makeGuess})(Character)
